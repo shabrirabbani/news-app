@@ -10,14 +10,17 @@ import SwiftUI
 
 protocol ViewProtocol: AnyObject {
     func showArticles(_ articles: [Article])
+    func searchNews(by date: Date)
 }
 
 protocol InteractorProtocol: AnyObject {
     func fetchNews()
+    func searchNews(by date: Date, completion: @escaping ([Article]) -> Void)
 }
 
 protocol PresenterProtocol: AnyObject {
     func viewDidLoad()
+    func searchNews(by date: Date)
 }
 
 protocol RouterProtocol: AnyObject {

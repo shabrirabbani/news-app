@@ -26,5 +26,27 @@ class NewsInteractor: InteractorProtocol {
             }
         }.resume()
     }
+    
+    func searchNews(by date: Date, completion: @escaping ([Article]) -> Void) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: date)
+        let url = "https://newsapi.org/v2/everything?q=keyword&from=\(dateString)&apiKey=5c00e8ac603947aba808a81c74ecb736"
+        
+        guard let requestUrl = URL(string: url) else { return }
+
+        URLSession.shared.dataTask(with: requestUrl) { data, response, error in
+            if let data = data {
+                do {
+                    let newsResponse = try JSONDecoder().decode(NewsResponse.self, from: data)
+                    self.presenter?.didFetchNews(articles: newsResponse.articles)
+                } catch {
+                    print(error)
+                }
+            }
+        }.resume()
+    }
+    
+    
 }
 
