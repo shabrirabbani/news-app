@@ -1,0 +1,2 @@
+# NEWS APP IOS
+building a news app for ios using swift and xcode, using the newsapi.org api to get the news data. implementing a search bar to search for news articles and a table view to display the news articles. implementing a web view to view the news article in a web view. implement VIPER architecture to structure the code.

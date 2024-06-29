@@ -29,7 +29,6 @@ class NewsPresenter: PresenterProtocol {
     }
     
     func searchNews(by date: Date) {
-        print("Searching news by date:", date)
             interactor.searchNews(by: date) { articles in
                 DispatchQueue.main.async {
                     self.view?.showArticles(articles)
