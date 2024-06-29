@@ -70,6 +70,10 @@ struct ContentViewProtocol: View {
                 newsView.onAppear()
             }
             
+            .refreshable {
+                searchDate = Date()
+                newsView.onAppear()
+            }
             .navigationBarTitle("News")
             
         }

@@ -89,6 +89,10 @@ struct ContentView: View {
             .onAppear {
                 newsView.onAppear()
             }
+            .refreshable {
+                searchDate = Date()
+                newsView.onAppear()
+            }
             .navigationBarTitle("News")
         }
     }

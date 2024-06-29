@@ -30,8 +30,10 @@ class NewsInteractor: InteractorProtocol {
     func searchNews(by date: Date, completion: @escaping ([Article]) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         let dateString = dateFormatter.string(from: date)
-        let url = "https://newsapi.org/v2/everything?q=keyword&from=\(dateString)&apiKey=5c00e8ac603947aba808a81c74ecb736"
+        let apiKey = "5c00e8ac603947aba808a81c74ecb736"
+        let url = "https://newsapi.org/v2/everything?q=keyword&from=\(dateString)&apiKey=\(apiKey)"
         
         guard let requestUrl = URL(string: url) else { return }
 
